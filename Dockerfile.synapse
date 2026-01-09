@@ -7,7 +7,14 @@ COPY synapse_data/localhost.log.config /data/localhost.log.config
 
 # Copy the startup script
 COPY scripts/start_railway.sh /start_railway.sh
-RUN chmod +x /start_railway.sh
+
+# Fix permissions: Synapse runs as user 991:991 by default in this image
+USER root
+RUN chmod +x /start_railway.sh && \
+    chown -R 991:991 /data
+
+# Switch back to synapse user
+USER 991
 
 # Use the script as entrypoint
 ENTRYPOINT ["/start_railway.sh"]
