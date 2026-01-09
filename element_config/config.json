@@ -1,8 +1,8 @@
 {
   "default_server_config": {
     "m.homeserver": {
-      "base_url": "http://192.168.1.4:8008",
-      "server_name": "localhost"
+      "base_url": "https://matrix-synapse-production.up.railway.app",
+      "server_name": "matrix-synapse-production.up.railway.app"
     }
   },
   "disable_custom_urls": true,
