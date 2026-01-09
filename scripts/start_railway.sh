@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Always copy the clean template first to avoid recursive replacement issues
+cp /data/homeserver.yaml.template /data/homeserver.yaml
+
 # Update homeserver.yaml with Railway environment variables
 
 echo "Injecting Railway Database Credentials..."

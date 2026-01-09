@@ -1,7 +1,7 @@
 FROM matrixdotorg/synapse:latest
 
 # Copy your local config and keys
-COPY synapse_data/homeserver.yaml /data/homeserver.yaml
+COPY synapse_data/homeserver.yaml /data/homeserver.yaml.template
 COPY synapse_data/localhost.signing.key /data/localhost.signing.key
 COPY synapse_data/localhost.log.config /data/localhost.log.config
 
