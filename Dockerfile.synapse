@@ -1,0 +1,13 @@
+FROM matrixdotorg/synapse:latest
+
+# Copy your local config and keys
+COPY synapse_data/homeserver.yaml /data/homeserver.yaml
+COPY synapse_data/localhost.signing.key /data/localhost.signing.key
+COPY synapse_data/localhost.log.config /data/localhost.log.config
+
+# Copy the startup script
+COPY scripts/start_railway.sh /start_railway.sh
+RUN chmod +x /start_railway.sh
+
+# Use the script as entrypoint
+ENTRYPOINT ["/start_railway.sh"]

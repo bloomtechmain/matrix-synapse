@@ -1,0 +1,50 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "localhost"
+pid_file: /data/homeserver.pid
+public_baseurl: "http://192.168.1.4:8008/"
+web_client_location: "http://192.168.1.4:8080/"
+cors_allowed_origins:
+  - "http://localhost:8080"
+  - "http://localhost:8080/"
+  - "http://172.22.32.1:8080"
+  - "http://172.22.32.1:8080/"
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client]
+        compress: false
+database:
+  name: psycopg2
+  args:
+    host: postgres
+    port: 5432
+    user: synapse
+    password: postgres
+    database: synapse
+log_config: "/data/localhost.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: "Ra~bNGDOCGRXOZ9k.&fH-#366HwGoi436LwtiTpFO6tx6hwMnk"
+enable_registration: true
+enable_registration_without_verification: true
+report_stats: false
+macaroon_secret_key: "GW^j,&16&yAd=G&cYXR:*PW&vlteVgJg1#JKKg@2xEUv^BYZ4A"
+form_secret: "G;=AT5^r+Yx#oFnM,BKGXU;i*W*-GKncG8uV.x@j3**L@j^xF~"
+signing_key_path: "/data/localhost.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+
+# vim:ft=yaml

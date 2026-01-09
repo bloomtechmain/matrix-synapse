@@ -1,0 +1,13 @@
+# Ignore database data
+postgres_data/
+synapse_data/media_store/
+synapse_data/uploads/
+*.log
+*.pid
+
+# Ignore env files containing secrets
+.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
